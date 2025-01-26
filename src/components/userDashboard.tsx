@@ -79,18 +79,14 @@ const UserDashboard: React.FC = () => {
               AI Assistant
             </div>
             <h2 className="text-2xl font-bold text-blue-500 mb-4">Your Personal Assistant</h2>
-            <div className="mt-4 border-2 border-blue-500 rounded-lg p-4 h-96 flex items-center justify-center">
+            <div className="mt-4 border-2 border-blue-500 h-[800px] rounded-lg p-4 h-96 flex items-center justify-center">
               {/* Chatbot placeholder */}
               <Chatbot/>
             </div>
           </div>
         </div>
   
-        {/* Bottom Section */}
-        <div className="flex-1 bg-white border-t-4 border-blue-500 rounded-t-3xl shadow-xl p-6 mt-4">
-          <h2 className="text-2xl font-bold text-blue-500">In-flight Entertainment</h2>
-          <p className="text-gray-700 mt-2">Coming soon: Movies, music, games, and more to enhance your flight experience!</p>
-        </div>
+        
       </div>
     );
   };
