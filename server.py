@@ -1,5 +1,5 @@
 import sys
-sys.path.append('/home/red/Coding/tamuhack2025-travlr/lib')
+sys.path.append('lib')
 
 from flask import Flask, request, jsonify, make_response
 import psycopg2
@@ -503,4 +503,4 @@ def get_chatgpt_response():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(debug=True, host='0.0.0.0', port=5173)

@@ -26,7 +26,7 @@ const ChatSubmitButton: React.FC<ChatSubmitButtonProps> = ({ userQuestion, setAi
     try {
       console.log("response2");
 
-      const response2 = await fetch(`http://localhost:5000/gets_flight/${storedEmail}`, {method: 'GET'});
+      const response2 = await fetch(`http://localhost:5173/gets_flight/${storedEmail}`, {method: 'GET'});
       console.log("yo");
       if (response2.ok) {
         const data = await response2.json();
@@ -35,7 +35,7 @@ const ChatSubmitButton: React.FC<ChatSubmitButtonProps> = ({ userQuestion, setAi
 
       console.log("response1");
 
-      const response1 = await fetch(`http://localhost:5000/flight/${flightId}`, {method: 'GET'});
+      const response1 = await fetch(`http://localhost:5173/flight/${flightId}`, {method: 'GET'});
       if (response1.ok) {
         const data = await response1.json();
         const currentTime = new Date().toISOString();
@@ -51,7 +51,7 @@ const ChatSubmitButton: React.FC<ChatSubmitButtonProps> = ({ userQuestion, setAi
       console.log(flightData);
 
       // Ensure flight info is updated
-      await fetch('http://localhost:5000/update_flight_info', {
+      await fetch('http://localhost:5173/update_flight_info', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json', // Specify the content type
@@ -62,7 +62,7 @@ const ChatSubmitButton: React.FC<ChatSubmitButtonProps> = ({ userQuestion, setAi
       console.log("chat");
 
       // Send chat request
-      const response = await fetch('http://localhost:5000/chat', {
+      const response = await fetch('http://localhost:5173/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json', // Specify the content type

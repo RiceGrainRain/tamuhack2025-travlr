@@ -1,7 +1,7 @@
 // FlightList.tsx
 import React from "react";
-import { flights } from '/home/red/Coding/tamuhack2025-travlr/src/assets/flightData.ts';
-import FlightCard from '/home/red/Coding/tamuhack2025-travlr/src/components/ui/FlightCard.tsx';
+import { flights } from '../../../tamuhack2025-travlr/src/assets/flightData.ts';
+import FlightCard from '../../../tamuhack2025-travlr/src/components/ui/FlightCard.tsx';
 
 const FlightList: React.FC = () => {
   return (

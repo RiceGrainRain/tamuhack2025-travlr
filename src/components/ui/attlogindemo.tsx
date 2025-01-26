@@ -35,6 +35,7 @@ export function AttLoginFormDemo() {
 
       const data = await response.json();
       console.log('Signup successful', data);
+      sessionStorage.setItem('type', 'a');
       // Handle successful signup (e.g., show success message)
     } catch (error) {
       console.error('Signup error', error);

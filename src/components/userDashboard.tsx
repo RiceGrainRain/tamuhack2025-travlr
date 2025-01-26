@@ -1,5 +1,5 @@
 import React from "react";
-import { travelInfo } from "/home/red/Coding/tamuhack2025-travlr/src/assets/travelInfo.ts";
+import { travelInfo } from "../../../tamuhack2025-travlr/src/assets/travelInfo.ts";
 
 const UserDashboard: React.FC = () => {
     const arrivalAirport = "LAX"; // Example: Get dynamically from flight data

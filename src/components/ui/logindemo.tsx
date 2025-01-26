@@ -18,7 +18,7 @@ export function LoginFormDemo() {
     try {
       sessionStorage.setItem('email', JSON.stringify(email));
 
-      const response = await fetch('http://localhost:5000/login_customer', {
+      const response = await fetch('http://localhost:5173/login_customer', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -35,6 +35,7 @@ export function LoginFormDemo() {
 
       const data = await response.json();
       console.log('Signup successful', data);
+      sessionStorage.setItem('type', 'c');
       // Handle successful signup (e.g., show success message)
     } catch (error) {
       console.error('Signup error', error);
