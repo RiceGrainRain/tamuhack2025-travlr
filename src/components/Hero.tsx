@@ -11,7 +11,7 @@ export function Hero() {
 
   const handleSignUpClick = () => {
     setShowSignup(true);
-    setShowLogin(false); // Ensure login is hidden when signup is shown
+    setShowLogin(false); 
   };
 
   const handleBackClick = () => {
@@ -20,7 +20,7 @@ export function Hero() {
 
   const handleLoginClick = () => {
     setShowLogin(true);
-    setShowSignup(false); // Ensure signup is hidden when login is shown
+    setShowSignup(false); 
   };
 
   const handleBackClick2 = () => {
@@ -29,7 +29,7 @@ export function Hero() {
 
   const handleChatbotClick = () => {
     alert("Chatbot button clicked!");
-    // Add your chatbot functionality here
+    
   };
 
   return (
