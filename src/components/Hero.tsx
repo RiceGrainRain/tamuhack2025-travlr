@@ -36,18 +36,26 @@ export function Hero() {
         {!showSignup && !showLogin ? (
           <>
             <TypewriterEffectSmoothDemo />
-            <div className="flex space-x-4">
+            <div className="flex flex-col space-y-4">
+              <div className="flex space-x-4">
+                <button
+                  className="shadow-[inset_0_0_0_2px_#616467] text-black px-12 py-4 rounded-full tracking-widest uppercase font-bold bg-white hover:bg-black hover:text-white dark:text-neutral-200 transition duration-200"
+                  onClick={handleSignUpClick}
+                >
+                  Sign Up
+                </button>
+                <button
+                  className="shadow-[inset_0_0_0_2px_#616467] text-black px-12 py-4 rounded-full tracking-widest uppercase font-bold bg-white hover:bg-black hover:text-white dark:text-neutral-200 transition duration-200"
+                  onClick={handleLoginClick}
+                >
+                  Login
+                </button>
+              </div>
               <button
-                className="shadow-[inset_0_0_0_2px_#616467] text-black px-12 py-4 rounded-full tracking-widest uppercase font-bold bg-white hover:bg-black hover:text-white dark:text-neutral-200 transition duration-200"
-                onClick={handleSignUpClick}
-              >
-                Sign Up
-              </button>
-              <button
-                className="shadow-[inset_0_0_0_2px_#616467] text-black px-12 py-4 rounded-full tracking-widest uppercase font-bold bg-white hover:bg-black hover:text-white dark:text-neutral-200 transition duration-200"
+                className="shadow-[inset_0_0_0_2px_#000000] text-white px-12 py-4 rounded-full tracking-widest uppercase font-bold bg-black hover:bg-blue-500 hover:text-black dark:text-neutral-200 transition duration-200"
                 onClick={handleLoginClick}
               >
-                Login
+                Flight Attendant Login
               </button>
             </div>
           </>
