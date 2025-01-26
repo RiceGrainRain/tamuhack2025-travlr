@@ -55,6 +55,10 @@ CREATE TABLE Flights (
     Flight_ID VARCHAR(8) NOT NULL,
     Depart VARCHAR(3) NOT NULL,
     Dest VARCHAR(3) NOT NULL,
+    Depart_Time INTEGER NOT NULL,
+    Dest_Time INTEGER NOT NULL,
+    Depart_Gate VARCHAR(3) NOT NULL,
+    Dest_Gate VARCHAR(3) NOT NULL
 );
 
 ALTER TABLE Flights
@@ -62,15 +66,15 @@ ADD CONSTRAINT pk PRIMARY KEY (Flight_ID);
  
 
 INSERT INTO Flights ( Flight_ID, Depart, Dest)
-VALUES ('TX784J', "DFW", "MGM"), ('AG923K', 'LAX', 'DEN'), ('RM150P', 'JAX', 'ATL')
+VALUES ('TX784J', "DFW", "MGM", 1200, 1400, "A53", "C29"), ('AG923K', 'LAX', 'DEN', 1600, 1900, "B32", "C30"), ('RM150P', 'JAX', 'ATL', 1000, 1100, "B30", "D03");
 
 INSERT INTO Food
-VALUES (1, "Chicken Breasts", 4.99), (2, "Cheesecake", 2.99), (1, "Yogurt Parfate", 1.99)
+VALUES (1, "Chicken Breasts", 4.99), (2, "Cheesecake", 2.99), (1, "Yogurt Parfate", 1.99);
 
 INSERT INTO Reviews (Flight_ID, Customer_ID, Rating, Review)
 VALUES ('RM150P', 2, 4, 'Everything was great but a little bumpy at the end'), ('AG923K', 2, 2, 'Food was cold and the flight attendants are rude'),  
 ('RM150P', 1, 3, 'It was alright, but I got the middle seat'), ('TX784J', 1, 5, 'Amazing flight with Amazing food and absolutely splendid service'),
-('TX784J', 3, 1, 'Terrible Flight I did not even get my food at the end and will never fly again'),('AG923K', 2, 3, 'I needed more leg room')
+('TX784J', 3, 1, 'Terrible Flight I did not even get my food at the end and will never fly again'),('AG923K', 2, 3, 'I needed more leg room');
 
 INSERT INTO Flight_Orders (Customer_ID,
     First_Name,
