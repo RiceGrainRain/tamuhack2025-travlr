@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { Link } from "react-router-dom";
-import { routes } from "/home/red/Coding/tamuhack2025-travlr/src/lib/routes.ts";
+import { routes } from "../../../../tamuhack2025-travlr/src/lib/routes.ts";
 
 export function Navbar() {
   return (

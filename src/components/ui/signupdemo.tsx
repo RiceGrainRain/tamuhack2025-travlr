@@ -7,7 +7,7 @@ import {
   IconBrandGithub,
   IconBrandGoogle,
 } from "@tabler/icons-react";
-import ChatSubmitButton from './ChatSubmitButton';
+
 
 
 export function SignupFormDemo() {
@@ -16,13 +16,7 @@ export function SignupFormDemo() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [aiResponse, setAiResponse] = useState('');
-  const [userQuestion, setUserQuestion] = useState('');
-
-  const handleSetAiResponse = (response: string) => {
-    setAiResponse(response);
-    alert(response);  // Display the AI response as an alert in the parent
-  };
+  
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -126,16 +120,7 @@ export function SignupFormDemo() {
           />
         </LabelInputContainer>
 
-        <LabelInputContainer className="mb-4">
-  <Label htmlFor="userQuestion">Your Question</Label>
-  <Input
-    id="userQuestion"
-    placeholder="Enter your question"
-    type="text"
-    value={userQuestion}
-    onChange={(e) => setUserQuestion(e.target.value)}
-  />
-</LabelInputContainer>
+        
 
 
         <button
@@ -146,13 +131,7 @@ export function SignupFormDemo() {
           <BottomGradient />
         </button>
 
-        <div className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
-        >
-        <ChatSubmitButton
-        userQuestion={userQuestion}
-        setAiResponse={handleSetAiResponse}
-        />
-        </div>
+        
 
         {/* Social login buttons change to type="button" */}
         <div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent my-8 h-[1px] w-full" />
