@@ -1,72 +1,78 @@
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { React , useEffect }  from 'react';
+import { BrowserRouter as Router, Routes, Route, useNavigate, Navigate } from 'react-router-dom';
 import Hero from './components/Hero';
 import AttendantManager from './components/FlightAttendantManager';
-
-import ChatbotPage from './components/Chatbot';
 import FlightList from './components/FlightList';
 import UserDashboard from './components/userDashboard';
 import Chatbot from './components/Chatbot';
+
+// Protected Route Component
+const ProtectedRoute = ({ children }) => {
+  const userType = sessionStorage.getItem('type');
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (userType === 'a') {
+      navigate('/about');
+    } else if (userType === 'c') {
+      navigate('/Lmnop');
+    } else {
+      navigate('/');
+    }
+  }, [userType, navigate]);
+
+  // Only render children if user is admin
+  return userType === 'a' ? children : null;
+};
 
 export default function App() {
   return (
     <Router>
       <div className="min-h-screen bg-gray-100">
-        {/* Navbar at the top center */}
-        <nav className="bg-white py-4">
-          <ul className="flex space-x-8 justify-center">
-            <li>
-              <Link
-                to="/"
-                className="text-black font-bold text-lg hover:text-blue-500"
-              >
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/about"
-                className="text-black font-bold text-lg hover:text-blue-500"text-gray-600
-              >
-                Dashboard
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/User"
-                className="text-black font-bold text-lg hover:text-blue-500"text-gray-600
-              >
-                Flights
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/Lmnop"
-                className="text-black font-bold text-lg hover:text-blue-500"text-gray-600
-              >
-                Dash2
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/Red"
-                className="text-black font-bold text-lg hover:text-blue-500"text-gray-600
-              >
-                Chat
-              </Link>
-            </li>
-
-          </ul>
-        </nav>
-
+        <NavBar />
         <Routes>
-          {/* Set the Hero component as the homepage */}
           <Route path="/" element={<Hero />} />
-          <Route path="/about" element={<AttendantManager />} />
+          <Route 
+            path="/about" 
+            element={
+              <ProtectedRoute>
+                <AttendantManager />
+              </ProtectedRoute>
+            } 
+          />
           <Route path="/User" element={<FlightList/>} />
           <Route path="/Lmnop" element={<UserDashboard/>} />
           <Route path="/Red" element={<Chatbot/>} />
         </Routes>
       </div>
     </Router>
+  );
+}
+
+function NavBar() {
+  const navigate = useNavigate();
+
+  const navButtons = [
+    { label: 'Home', path: '/' },
+    { label: 'Dashboard', path: '/about' },
+    { label: 'Flights', path: '/User' },
+    { label: 'Dash2', path: '/Lmnop' },
+    { label: 'Chat', path: '/Red' }
+  ];
+
+  return (
+    <nav className="bg-white py-4">
+      <div className="flex space-x-4 justify-center">
+        {navButtons.map((button) => (
+          <button
+            key={button.path}
+            onClick={() => navigate(button.path)}
+            className="bg-transparent text-black px-4 py-2 rounded hover:bg-gray-200 transition-colors"
+          >
+            {button.label}
+          </button>
+        ))}
+      </div>
+    </nav>
   );
 }

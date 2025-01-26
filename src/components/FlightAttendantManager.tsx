@@ -6,13 +6,14 @@ interface Request {
   id: number;
   title: string;
   description: string;
+  severity: "high" | "medium" | "low";
 }
 
 const Dashboard: React.FC = () => {
   const [requests, setRequests] = useState<Request[]>([
-    { id: 1, title: "Request 1", description: "Details for request 1" },
-    { id: 2, title: "Request 2", description: "Details for request 2" },
-    { id: 3, title: "Request 3", description: "Details for request 3" },
+    { id: 1, title: "Seat 19", description: "In an existential crisis", severity: "high" },
+    { id: 2, title: "Seat 78", description: "In need of an extra blankie", severity: "medium" },
+    { id: 3, title: "Seat 67", description: "Difficulty w leg room...", severity: "low" },
   ]);
   const [expandedId, setExpandedId] = useState<number | null>(null);
 
@@ -22,6 +23,19 @@ const Dashboard: React.FC = () => {
 
   const handleComplete = (id: number) => {
     setRequests((prev) => prev.filter((request) => request.id !== id));
+  };
+
+  const getSeverityStyles = (severity: string) => {
+    switch (severity) {
+      case "high":
+        return "bg-red-500 text-white";
+      case "medium":
+        return "bg-orange-500 text-white";
+      case "low":
+        return "bg-green-500 text-white";
+      default:
+        return "";
+    }
   };
 
   return (
@@ -54,7 +68,16 @@ const Dashboard: React.FC = () => {
                     className="flex items-center justify-between p-6 bg-gray-100 cursor-pointer"
                     onClick={() => handleExpand(request.id)}
                   >
-                    <h2 className="text-xl font-semibold">{request.title}</h2>
+                    <div className="flex items-center space-x-4">
+                      <h2 className="text-xl font-semibold">{request.title}</h2>
+                      <span
+                        className={`px-2 py-1 rounded-full text-sm font-semibold ${getSeverityStyles(
+                          request.severity
+                        )}`}
+                      >
+                        {request.severity.toUpperCase()}
+                      </span>
+                    </div>
                     <button
                       className="text-blue-500 hover:text-blue-600 focus:outline-none"
                       onClick={(e) => {
@@ -86,11 +109,11 @@ const Dashboard: React.FC = () => {
           className="w-1/3 bg-gray-50 p-6 rounded-lg shadow-md border border-gray-200 flex flex-col justify-between"
           style={{ minHeight: "80vh" }}
         >
-          <h2 className="text-3xl font-bold mb-6">Flight</h2>
+          <h2 className="text-3xl font-bold mb-6">Flight Information</h2>
 
           <div className="mb-6">
             <h3 className="text-2xl font-semibold">Attendant Name</h3>
-            <p className="text-xl text-gray-700">John Doe</p>
+            <p className="text-xl text-gray-700">Bruce Wayne</p>
           </div>
 
           <div className="mb-6">
