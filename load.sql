@@ -51,6 +51,15 @@ CREATE TABLE Reviews (
     PRIMARY KEY (Flight_ID, Customer_ID)
 );
 
+CREATE TABLE Requests (
+    Flight_ID VARCHAR(8) NOT NULL,
+    Customer_ID INTEGER NOT NULL,
+    request_id SERIAL,
+    Seat INTEGER NOT NULL,
+    Review TEXT NOT NULL,
+    PRIMARY KEY (Flight_ID, Customer_ID)
+);
+
 CREATE TABLE Flights (
     Flight_ID VARCHAR(8) NOT NULL,
     Depart VARCHAR(3) NOT NULL,
