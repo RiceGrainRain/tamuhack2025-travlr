@@ -25,6 +25,14 @@ export default function App() {
                 Dashboard
               </Link>
             </li>
+            <li>
+              <Link
+                to="/User"
+                className="text-black font-bold text-lg hover:text-blue-500"text-gray-600
+              >
+                UserProcessing
+              </Link>
+            </li>
 
           </ul>
         </nav>
