@@ -82,7 +82,7 @@ def new_order(ci, fi, s, c):
     print("Inserted order successfully!")
     conn.close()
 
-def new_review(d, fi, ci, ra, re):
+def new_review(fi, ci, ra, re):
     try:
         conn = psycopg2.connect(
             host=endpoint,
@@ -98,8 +98,8 @@ def new_review(d, fi, ci, ra, re):
 
     # Cursor to execute queries
     cursor = conn.cursor()
-    query = """INSERT INTO Reviews (Date_, Flight_ID, Customer_ID, Rating, Review) VALUES (%s, %s, %s, %s, %s);"""
-    cursor.execute(query, (d, fi, ci, ra, re))
+    query = """INSERT INTO Reviews (Flight_ID, Customer_ID, Rating, Review) VALUES (%s, %s, %s, %s, %s);"""
+    cursor.execute(query, (fi, ci, ra, re))
     conn.commit()
     print("Inserted review successfully!")
     conn.close()
