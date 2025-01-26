@@ -5,6 +5,7 @@ import AttendantManager from './components/FlightAttendantManager';
 import ChatbotPage from './components/Chatbot';
 import FlightList from './components/FlightList';
 import UserDashboard from './components/userDashboard';
+import Chatbot from './components/Chatbot';
 
 export default function App() {
   return (
@@ -45,6 +46,14 @@ export default function App() {
                 Dash2
               </Link>
             </li>
+            <li>
+              <Link
+                to="/Red"
+                className="text-black font-bold text-lg hover:text-blue-500"text-gray-600
+              >
+                Chat
+              </Link>
+            </li>
 
           </ul>
         </nav>
@@ -55,6 +64,7 @@ export default function App() {
           <Route path="/about" element={<AttendantManager />} />
           <Route path="/User" element={<FlightList/>} />
           <Route path="/Lmnop" element={<UserDashboard/>} />
+          <Route path="/Red" element={<Chatbot/>} />
         </Routes>
       </div>
     </Router>

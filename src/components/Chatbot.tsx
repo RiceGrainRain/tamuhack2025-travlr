@@ -1,59 +1,76 @@
-// src/App.tsx
+import React, { useState, useEffect, useRef } from 'react';
+import ChatSubmitButton from './ui/ChatSubmitButton'; // Import the ChatSubmitButton component
 
-import React, { useState } from "react";
-import ChatBot from '../../../tamuhack2025-travlr/src/components/ui/chatbot-demo.tsx';
-import { Label } from "../../../tamuhack2025-travlr/src/components/ui/labels.tsx";
-import { Input } from "../../../tamuhack2025-travlr/src/components/ui/input.tsx";
-import { cn } from "../../../tamuhack2025-travlr/src/lib/utils.ts";
-import ChatSubmitButton from './ui/ChatSubmitButton';
+interface Message {
+  id: number;
+  text: string;
+  sender: 'user' | 'bot';
+}
 
-const ChatbotPage: React.FC = () => {
-  const [aiResponse, setAiResponse] = useState('');
+const Chatbot: React.FC = () => {
+  const [messages, setMessages] = useState<Message[]>([]);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
   const [userQuestion, setUserQuestion] = useState('');
-  
+  const [aiResponse, setAiResponse] = useState('');
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
   const handleSetAiResponse = (response: string) => {
     setAiResponse(response);
     alert(response);  // Display the AI response as an alert in the parent
   };
+
+  // Clear the input after submitting
+  const clearInput = () => {
+    setUserQuestion(''); // Reset userQuestion state to clear the input field
+  };
+
   return (
-    
-    <div>
-      <ChatBot/>
-      <LabelInputContainer className="mb-4">
-      <Label htmlFor="userQuestion">Your Question</Label>
-      <Input
-        id="userQuestion"
-        placeholder="Enter your question"
-        type="text"
-        value={userQuestion}
-        onChange={(e) => setUserQuestion(e.target.value)}
-      />
-      </LabelInputContainer>
-      <div className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
-      >
-        <ChatSubmitButton
-          userQuestion={userQuestion}
-          setAiResponse={handleSetAiResponse}
+    <div className="flex flex-col h-[90vh] max-w-xl mx-auto border rounded-lg shadow-lg">
+      <div className="flex-grow overflow-y-auto p-4 space-y-2">
+        {messages.map((message) => (
+          <div
+            key={message.id}
+            className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+          >
+            <div
+              className={`max-w-[80%] p-2 rounded-lg ${
+                message.sender === 'user'
+                  ? 'bg-blue-500 text-white'
+                  : 'bg-gray-200 text-black'
+              }`}
+            >
+              {message.text}
+            </div>
+          </div>
+        ))}
+        <div ref={messagesEndRef} />
+      </div>
+      <div className="flex p-2 border-t">
+        <input
+          id="userQuestion"
+          type="text"
+          value={userQuestion}
+          onChange={(e) => setUserQuestion(e.target.value)}
+          placeholder="Type a message..."
+          className="flex-grow p-2 border rounded-l-lg focus:outline-none"
         />
+        <div className="bg-blue-500 text-white p-2 rounded-r-lg hover:bg-blue-600">
+          <ChatSubmitButton
+            userQuestion={userQuestion}
+            setAiResponse={handleSetAiResponse} // Pass the response handler to the button
+            clearInput={clearInput} // Pass the clearInput function to the button
+          />
+        </div>
       </div>
     </div>
-
-    
   );
 };
 
-const LabelInputContainer = ({
-  children,
-  className,
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) => {
-  return (
-    <div className={cn("flex flex-col space-y-2 w-full", className)}>
-      {children}
-    </div>
-  );
-};
-
-export default ChatbotPage;
+export default Chatbot;

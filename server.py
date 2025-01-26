@@ -1,5 +1,5 @@
 import sys
-sys.path.append('lib')
+sys.path.append('/home/red/Coding/tamuhack2025-travlr/lib')
 
 from flask import Flask, request, jsonify, make_response
 import psycopg2
