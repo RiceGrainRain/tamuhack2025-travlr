@@ -3,6 +3,7 @@ import Hero from './components/Hero';
 import AttendantManager from './components/FlightAttendantManager';
 
 import ChatbotPage from './components/Chatbot';
+import FlightList from './components/FlightList';
 
 export default function App() {
   return (
@@ -43,7 +44,7 @@ export default function App() {
           {/* Set the Hero component as the homepage */}
           <Route path="/" element={<Hero />} />
           <Route path="/about" element={<AttendantManager />} />
-          <Route path="/User" element={<ChatbotPage/>} />
+          <Route path="/User" element={<FlightList/>} />
         </Routes>
       </div>
     </Router>
