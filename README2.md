@@ -1,0 +1,1 @@
+pip install flask flask_cors psycopg2 openai python-dotenv -t lib

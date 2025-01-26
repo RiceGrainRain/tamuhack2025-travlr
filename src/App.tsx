@@ -2,6 +2,8 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Hero from './components/Hero';
 import AttendantManager from './components/FlightAttendantManager';
 
+import ChatbotPage from './components/Chatbot';
+
 export default function App() {
   return (
     <Router>
@@ -41,6 +43,7 @@ export default function App() {
           {/* Set the Hero component as the homepage */}
           <Route path="/" element={<Hero />} />
           <Route path="/about" element={<AttendantManager />} />
+          <Route path="/User" element={<ChatbotPage/>} />
         </Routes>
       </div>
     </Router>
