@@ -40,10 +40,11 @@ export function AttLoginFormDemo() {
       sessionStorage.setItem('type', 'a');
       
       // Redirect to the Dashboard page after successful sign-up
-      navigate('/about'); // Redirect to Dashboard
+      navigate('/User'); // Redirect to Dashboard
 
     } catch (error) {
       console.error('Signup error', error);
+      alert("Incorrect Email or Password");
       // Handle signup error (e.g., show error message)
     }
   };
@@ -83,7 +84,7 @@ export function AttLoginFormDemo() {
           className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
           type="submit"
         >
-          Sign up &rarr;
+          Log in &rarr;
           <BottomGradient />
         </button>
 

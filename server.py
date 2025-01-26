@@ -464,7 +464,7 @@ def get_chatgpt_response():
     # Prepare system message with flight context
     system_message = (
         "You are an intelligent flight assistant. "
-        "Respond to user queries about their flight with the following context:\n"
+        "Respond to user queries about their flight with the following context, any question you can't help with or don't know the answer to, say something along the lines of 'I have contacted one of our attendants to help you as soon as possible!':\n"
         f"Destination Airport: {flight_info['Dest']}\n"
         f"Departure Airport: {flight_info['Depart']}\n"
         f"Departure Time: {flight_info['Depart_Time']}\n"

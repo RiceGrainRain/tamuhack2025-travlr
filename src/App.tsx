@@ -56,8 +56,8 @@ function NavBar() {
     { label: 'Home', path: '/' },
     { label: 'Dashboard', path: '/about' },
     { label: 'Flights', path: '/User' },
-    { label: 'Dash2', path: '/Lmnop' },
-    { label: 'Chat', path: '/Red' }
+    /*{ label: 'Dash2', path: '/Lmnop' },*/
+    /*{ label: 'Chat', path: '/Red' }*/
   ];
 
   return (
