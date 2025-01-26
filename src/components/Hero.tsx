@@ -1,4 +1,3 @@
-"use client";
 import React, { useState } from "react";
 import TypewriterEffectSmoothDemo from "./ui/typewriter-demo";
 import { SignupFormDemo } from "/home/red/Coding/tamuhack2025-travlr/src/components/ui/signupdemo.tsx"; // Import the SignupFormDemo component
@@ -29,56 +28,11 @@ export function Hero() {
 
   const handleChatbotClick = () => {
     alert("Chatbot button clicked!");
-    
   };
 
   return (
     <section className="relative flex items-center justify-center h-screen w-full overflow-hidden bg-white">
       <div className="relative z-20 flex flex-col items-center space-y-6">
-        {showSignup && (
-          <button
-            onClick={handleBackClick}
-            className="absolute top-4 left-4 p-2 text-black hover:text-gray-600"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              className="w-8 h-8"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M15 19l-7-7 7-7"
-              />
-            </svg>
-          </button>
-        )}
-
-        {showLogin && (
-          <button
-            onClick={handleBackClick2}
-            className="absolute top-4 left-4 p-2 text-black hover:text-gray-600"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              className="w-8 h-8"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M15 19l-7-7 7-7"
-              />
-            </svg>
-          </button>
-        )}
-
         {!showSignup && !showLogin ? (
           <>
             <TypewriterEffectSmoothDemo />
@@ -103,6 +57,49 @@ export function Hero() {
           <LoginFormDemo />
         )}
       </div>
+      {showLogin && (
+          <button
+            onClick={handleBackClick2}
+            className="absolute top-4 left-4 p-2 text-black hover:text-gray-600 z-30"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="w-8 h-8"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M15 19l-7-7 7-7"
+              />
+            </svg>
+          </button>
+        )}
+                {showSignup && (
+          <button
+            onClick={handleBackClick}
+            className="absolute top-4 left-4 p-2 text-black hover:text-gray-600 z-30"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="w-8 h-8"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M15 19l-7-7 7-7"
+              />
+            </svg>
+          </button>
+        )}
+
       <ChatbotButton onClick={handleChatbotClick} />
     </section>
   );
