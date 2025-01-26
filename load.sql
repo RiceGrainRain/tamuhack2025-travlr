@@ -81,3 +81,6 @@ INSERT INTO Flights (Flight_ID, Depart, Dest, Depart_Time, Dest_Time, Depart_Gat
 INSERT INTO Employees (Employee_ID, First_Name, Last_Name, Password_, Email_Address, Flight_ID) VALUES (1, 'Seth', 'Brown', 'sb1', 'sethb@gmail.com', 1234);
 INSERT INTO Requests (Seat, Request) VALUES ('A12', 'The window will not close');
 INSERT INTO Requests (Seat, Request) VALUES ('A24', 'Could I get a bottle of water');
+INSERT INTO Customers (Customer_ID, First_Name, Last_Name, Password_, Email_Address, Flight_ID, Seat) VALUES (12, 'Jane', 'Jones', 'pw', 'jane2024@gmail.com', 1543, 'A05');
+INSERT INTO Flights (Flight_ID, Depart, Dest, Depart_Time, Dest_Time, Depart_Gate, Dest_Gate) VALUES (1543, 'IAH', 'DFW', 1230, 1400, 'A10', 'A29');
+INSERT INTO Flights (Flight_ID, Depart, Dest, Depart_Time, Dest_Time, Depart_Gate, Dest_Gate) VALUES (9362, 'DEN', 'MIA', 1000, 1400, 'B31', 'D12');
