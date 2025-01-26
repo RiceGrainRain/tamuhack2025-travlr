@@ -1,5 +1,7 @@
 import React from "react";
 import { travelInfo } from "../../../tamuhack2025-travlr/src/assets/travelInfo.ts";
+import Chatbot from '../components/Chatbot';
+
 
 const UserDashboard: React.FC = () => {
     const arrivalAirport = "LAX"; // Example: Get dynamically from flight data
@@ -79,7 +81,7 @@ const UserDashboard: React.FC = () => {
             <h2 className="text-2xl font-bold text-blue-500 mb-4">Your Personal Assistant</h2>
             <div className="mt-4 border-2 border-blue-500 rounded-lg p-4 h-96 flex items-center justify-center">
               {/* Chatbot placeholder */}
-              <p className="text-gray-500 italic">Chatbox coming soon...</p>
+              <Chatbot/>
             </div>
           </div>
         </div>

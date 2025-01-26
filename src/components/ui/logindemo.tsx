@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import { Label } from "../../../../tamuhack2025-travlr/src/components/ui/labels.tsx";
 import { Input } from "../../../../tamuhack2025-travlr/src/components/ui/input.tsx";
 import { cn } from "../../../../tamuhack2025-travlr/src/lib/utils.ts";
@@ -11,6 +12,7 @@ import {
 export function LoginFormDemo() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate(); // Initialize navigate
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -18,7 +20,7 @@ export function LoginFormDemo() {
     try {
       sessionStorage.setItem('email', JSON.stringify(email));
 
-      const response = await fetch('http://localhost:5173/login_customer', {
+      const response = await fetch('http://localhost:5000/login_customer', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -36,6 +38,7 @@ export function LoginFormDemo() {
       const data = await response.json();
       console.log('Signup successful', data);
       sessionStorage.setItem('type', 'c');
+      navigate('/Lmnop');
       // Handle successful signup (e.g., show success message)
     } catch (error) {
       console.error('Signup error', error);

@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import { Label } from "../../../../tamuhack2025-travlr/src/components/ui/labels.tsx";
 import { Input } from "../../../../tamuhack2025-travlr/src/components/ui/input.tsx";
 import { cn } from "../../../../tamuhack2025-travlr/src/lib/utils.ts";
@@ -11,6 +12,7 @@ import {
 export function AttLoginFormDemo() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate(); // Initialize navigate
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -18,7 +20,7 @@ export function AttLoginFormDemo() {
     try {
       sessionStorage.setItem('email', JSON.stringify(email));
 
-      const response = await fetch('http://localhost:5000/login_customer', {
+      const response = await fetch('http://localhost:5000/login_employee', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -36,7 +38,10 @@ export function AttLoginFormDemo() {
       const data = await response.json();
       console.log('Signup successful', data);
       sessionStorage.setItem('type', 'a');
-      // Handle successful signup (e.g., show success message)
+      
+      // Redirect to the Dashboard page after successful sign-up
+      navigate('/about'); // Redirect to Dashboard
+
     } catch (error) {
       console.error('Signup error', error);
       // Handle signup error (e.g., show error message)

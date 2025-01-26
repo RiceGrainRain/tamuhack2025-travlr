@@ -32,7 +32,7 @@ const Chatbot: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col h-[90vh] max-w-xl mx-auto border rounded-lg shadow-lg">
+    <div className="flex flex-col h-full max-w-xl mx-auto">
       <div className="flex-grow overflow-y-auto p-4 space-y-2">
         {messages.map((message) => (
           <div

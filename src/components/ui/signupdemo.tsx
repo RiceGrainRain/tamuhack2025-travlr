@@ -29,7 +29,7 @@ export function SignupFormDemo() {
     }
 
     try {
-      const response = await fetch('http://localhost:5173/new_customer', {
+      const response = await fetch('http://localhost:5000/new_customer', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
