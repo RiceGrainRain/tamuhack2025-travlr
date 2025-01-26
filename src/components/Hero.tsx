@@ -3,6 +3,7 @@ import TypewriterEffectSmoothDemo from "./ui/typewriter-demo";
 import { SignupFormDemo } from "/home/red/Coding/tamuhack2025-travlr/src/components/ui/signupdemo.tsx"; // Import the SignupFormDemo component
 import { LoginFormDemo } from "/home/red/Coding/tamuhack2025-travlr/src/components/ui/logindemo.tsx"; // Import the LoginFormDemo component
 import ChatbotButton from "/home/red/Coding/tamuhack2025-travlr/src/components/ui/chatbot-button.tsx"; // Import the ChatbotButton component
+import { BackgroundBeams } from "./ui/backgroundbeams";
 
 export function Hero() {
   const [showSignup, setShowSignup] = useState(false);
@@ -107,8 +108,8 @@ export function Hero() {
             </svg>
           </button>
         )}
-
       <ChatbotButton onClick={handleChatbotClick} />
+      <BackgroundBeams/>
     </section>
   );
 }
