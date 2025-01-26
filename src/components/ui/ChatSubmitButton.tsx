@@ -4,9 +4,10 @@ import React, { useState } from 'react';
 interface ChatSubmitButtonProps {
   userQuestion: string;
   setAiResponse: (response: string) => void;
+  clearInput: () => void; // Accept clearInput function as a prop
 }
 
-const ChatSubmitButton: React.FC<ChatSubmitButtonProps> = ({ userQuestion, setAiResponse }) => {
+const ChatSubmitButton: React.FC<ChatSubmitButtonProps> = ({ userQuestion, setAiResponse, clearInput }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [flightId, setFlightId] = useState('');
   const [flightData, setFlightData] = useState<any>(null);
@@ -75,6 +76,7 @@ const ChatSubmitButton: React.FC<ChatSubmitButtonProps> = ({ userQuestion, setAi
       console.error("Error during API calls:", error);
     } finally {
       setIsLoading(false);  // Reset loading state
+      clearInput(); // Clear the input after submission
     }
   };
 

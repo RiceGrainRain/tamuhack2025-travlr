@@ -1,30 +1,44 @@
 import React, { useState } from "react";
 import TypewriterEffectSmoothDemo from "./ui/typewriter-demo";
-import { SignupFormDemo } from "/home/red/Coding/tamuhack2025-travlr/src/components/ui/signupdemo.tsx"; // Import the SignupFormDemo component
-import { LoginFormDemo } from "/home/red/Coding/tamuhack2025-travlr/src/components/ui/logindemo.tsx"; // Import the LoginFormDemo component
-import ChatbotButton from "/home/red/Coding/tamuhack2025-travlr/src/components/ui/chatbot-button.tsx"; // Import the ChatbotButton component
+import { SignupFormDemo } from "../../../tamuhack2025-travlr/src/components/ui/signupdemo.tsx"; // Import the SignupFormDemo component
+import { LoginFormDemo } from "../../../tamuhack2025-travlr/src/components/ui/logindemo.tsx"; // Import the LoginFormDemo component
+import { AttLoginFormDemo } from "../../../tamuhack2025-travlr/src/components/ui/attlogindemo.tsx"; // Import the LoginFormDemo component
+import ChatbotButton from "../../../tamuhack2025-travlr/src/components/ui/chatbot-button.tsx"; // Import the ChatbotButton component
 import { BackgroundBeams } from "./ui/backgroundbeams";
 
 export function Hero() {
   const [showSignup, setShowSignup] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
+  const [showAttLogin, setShowAtt] = useState(false);
 
   const handleSignUpClick = () => {
     setShowSignup(true);
     setShowLogin(false); 
+    setShowAtt(false);
   };
 
   const handleBackClick = () => {
     setShowSignup(false);
+    setShowAtt(false);
+    setShowLogin(false);
   };
 
   const handleLoginClick = () => {
     setShowLogin(true);
     setShowSignup(false); 
+    setShowAtt(false);
+  };
+
+  const handleAttLoginClick = () => {
+    setShowAtt(true);
+    setShowLogin(false);
+    setShowSignup(false); 
   };
 
   const handleBackClick2 = () => {
     setShowLogin(false);
+    setShowSignup(false); 
+    setShowAtt(false);
   };
 
   const handleChatbotClick = () => {
@@ -54,7 +68,7 @@ export function Hero() {
               </div>
               <button
                 className="shadow-[inset_0_0_0_2px_#000000] text-white px-12 py-4 rounded-full tracking-widest uppercase font-bold bg-black hover:bg-blue-500 hover:text-black dark:text-neutral-200 transition duration-200"
-                onClick={handleLoginClick}
+                onClick={handleAttLoginClick}
               >
                 Flight Attendant Login
               </button>
@@ -62,8 +76,12 @@ export function Hero() {
           </>
         ) : showSignup ? (
           <SignupFormDemo />
-        ) : (
+        ) : showLogin ?(
           <LoginFormDemo />
+        ) : showAttLogin ?(
+          <AttLoginFormDemo />
+        ):(
+          null
         )}
       </div>
       {showLogin && (

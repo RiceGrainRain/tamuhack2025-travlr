@@ -9,8 +9,8 @@ interface Message {
 
 const Chatbot: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([]);
-  const [inputText, setInputText] = useState<string>('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const [userQuestion, setUserQuestion] = useState('');
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -21,11 +21,11 @@ const Chatbot: React.FC = () => {
   }, [messages]);
 
   const handleSendMessage = () => {
-    if (inputText.trim() === '') return;
+    if (userQuestion.trim() === '') return;
 
     const newUserMessage: Message = {
       id: Date.now(),
-      text: inputText,
+      text: userQuestion,
       sender: 'user'
     };
 
@@ -35,13 +35,13 @@ const Chatbot: React.FC = () => {
     setTimeout(() => {
       const botResponse: Message = {
         id: Date.now() + 1,
-        text: `You said: ${inputText}`,
+        text: `You said: ${userQuestion}`,
         sender: 'bot'
       };
       setMessages(prevMessages => [...prevMessages, botResponse]);
     }, 500);
 
-    setInputText('');
+    setUserQuestion('');
   };
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -75,9 +75,10 @@ const Chatbot: React.FC = () => {
       </div>
       <div className="flex p-2 border-t">
         <input 
+          id="userQuestion"
           type="text"
-          value={inputText}
-          onChange={(e) => setInputText(e.target.value)}
+          value={userQuestion}
+          onChange={(e) => setUserQuestion(e.target.value)}
           onKeyPress={handleKeyPress}
           placeholder="Type a message..."
           className="flex-grow p-2 border rounded-l-lg focus:outline-none"
