@@ -96,7 +96,6 @@ const Dashboard: React.FC = () => {
           <div className="mb-6">
             <h3 className="text-2xl font-semibold">Flight Details</h3>
             <p className="text-xl text-gray-700">Flight Number: AB1234</p>
-            <p className="text-xl text-gray-700">Seat: 12A</p>
             <p className="text-xl text-gray-700">Boarding Gate: B15</p>
             <p className="text-xl text-gray-700">Departure Time: 10:30 AM</p>
             <p className="text-xl text-gray-700">From: New York (JFK)</p>
