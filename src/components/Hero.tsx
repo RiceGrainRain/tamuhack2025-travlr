@@ -44,12 +44,12 @@ export function Hero() {
             <TypewriterEffectSmoothDemo />
             <div className="flex space-x-4">
               <button
-                className="shadow-[inset_0_0_0_2px_#616467] text-black px-12 py-4 rounded-full tracking-widest uppercase font-bold bg-transparent hover:bg-black hover:text-white dark:text-neutral-200 transition duration-200"
+                className="shadow-[inset_0_0_0_2px_#616467] text-black px-12 py-4 rounded-full tracking-widest uppercase font-bold bg-white hover:bg-black hover:text-white dark:text-neutral-200 transition duration-200"
                 onClick={handleSignUpClick}
               >
                 Sign Up
               </button>
-              <button className="shadow-[inset_0_0_0_2px_#616467] text-black px-12 py-4 rounded-full tracking-widest uppercase font-bold bg-transparent hover:bg-black hover:text-white dark:text-neutral-200 transition duration-200">
+              <button className="shadow-[inset_0_0_0_2px_#616467] text-black px-12 py-4 rounded-full tracking-widest uppercase font-bold bg-white hover:bg-black hover:text-white dark:text-neutral-200 transition duration-200">
                 Login
               </button>
             </div>
