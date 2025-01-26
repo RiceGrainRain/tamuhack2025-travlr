@@ -16,6 +16,8 @@ export function LoginFormDemo() {
     e.preventDefault();
     
     try {
+      sessionStorage.setItem('email', JSON.stringify(email));
+
       const response = await fetch('http://localhost:5000/login_customer', {
         method: 'POST',
         headers: {

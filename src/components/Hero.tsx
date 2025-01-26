@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import TypewriterEffectSmoothDemo from "./ui/typewriter-demo";
 import { SignupFormDemo } from "../../../tamuhack2025-travlr/src/components/ui/signupdemo.tsx"; // Import the SignupFormDemo component
 import { LoginFormDemo } from "../../../tamuhack2025-travlr/src/components/ui/logindemo.tsx"; // Import the LoginFormDemo component
-import ChatbotButton from "../../../tamuhack2025-travlr/src/components/ui/chatbot-button.tsx"; // Import the ChatbotButton component
+import ChatbotButton from "./ui/ChatSubmitButton.tsx"; // Import the ChatbotButton component
 
 export function Hero() {
   const [showSignup, setShowSignup] = useState(false);
