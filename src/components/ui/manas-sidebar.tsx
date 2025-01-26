@@ -1,5 +1,5 @@
 "use client";
-import { cn } from "/home/red/Coding/tamuhack2025-travlr/src/lib/utils.ts";
+import { cn } from "../../../../tamuhack2025-travlr/src/lib/utils.ts";
 import Link, { LinkProps } from "next/link";
 import React, { useState, createContext, useContext } from "react";
 import { AnimatePresence, motion } from "framer-motion";

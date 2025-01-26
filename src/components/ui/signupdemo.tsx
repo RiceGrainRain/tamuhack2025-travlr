@@ -1,18 +1,57 @@
 "use client";
-import React from "react";
-import { Label } from "/home/red/Coding/tamuhack2025-travlr/src/components/ui/labels.tsx";
-import { Input } from "/home/red/Coding/tamuhack2025-travlr/src/components/ui/input.tsx";
-import { cn } from "/home/red/Coding/tamuhack2025-travlr/src/lib/utils.ts";
+import React, { useState } from "react";
+import { Label } from "../../../../tamuhack2025-travlr/src/components/ui/labels.tsx";
+import { Input } from "../../../../tamuhack2025-travlr/src/components/ui/input.tsx";
+import { cn } from "../../../../tamuhack2025-travlr/src/lib/utils.ts";
 import {
   IconBrandGithub,
   IconBrandGoogle,
 } from "@tabler/icons-react";
 
 export function SignupFormDemo() {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Form submitted");
+    
+    // Basic validation
+    if (password !== confirmPassword) {
+      console.error('Passwords do not match');
+      return;
+    }
+
+    try {
+      const response = await fetch('http://localhost:5000/new_customer', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id: Math.floor(Math.random() * 10000), // Generate random ID
+          first_name: firstName,
+          last_name: lastName,
+          password: password,
+          email: email
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('Signup failed');
+      }
+
+      const data = await response.json();
+      console.log('Signup successful', data);
+      // Add any post-signup logic (e.g., redirect, show success message)
+    } catch (error) {
+      console.error('Signup error', error);
+      // Handle signup error (e.g., show error message)
+    }
   };
+
   return (
     <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
       <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
@@ -27,27 +66,53 @@ export function SignupFormDemo() {
         <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
           <LabelInputContainer>
             <Label htmlFor="firstname">First name</Label>
-            <Input id="firstname" placeholder="Dave" type="text" />
+            <Input 
+              id="firstname" 
+              placeholder="Dave" 
+              type="text"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+            />
           </LabelInputContainer>
           <LabelInputContainer>
             <Label htmlFor="lastname">Last name</Label>
-            <Input id="lastname" placeholder="Blunts" type="text" />
+            <Input 
+              id="lastname" 
+              placeholder="Blunts" 
+              type="text"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+            />
           </LabelInputContainer>
         </div>
         <LabelInputContainer className="mb-4">
           <Label htmlFor="email">Email Address</Label>
-          <Input id="email" placeholder="manasnavale@hacktamu.org" type="email" />
+          <Input 
+            id="email" 
+            placeholder="manasnavale@hacktamu.org" 
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
         </LabelInputContainer>
         <LabelInputContainer className="mb-4">
           <Label htmlFor="password">Password</Label>
-          <Input id="password" placeholder="••••••••" type="password" />
+          <Input 
+            id="password" 
+            placeholder="••••••••" 
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </LabelInputContainer>
         <LabelInputContainer className="mb-8">
-          <Label htmlFor="Retype your password">Password again.</Label>
+          <Label htmlFor="Retype your password">Confirm Your Password</Label>
           <Input
             id="repassword"
             placeholder="••••••••"
-            type="repassword"
+            type="password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </LabelInputContainer>
 
@@ -59,12 +124,13 @@ export function SignupFormDemo() {
           <BottomGradient />
         </button>
 
+        {/* Social login buttons change to type="button" */}
         <div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent my-8 h-[1px] w-full" />
 
         <div className="flex flex-col space-y-4">
           <button
-            className=" relative group/btn flex space-x-2 items-center justify-start px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]"
-            type="submit"
+            className="relative group/btn flex space-x-2 items-center justify-start px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]"
+            type="button"
           >
             <IconBrandGithub className="h-4 w-4 text-neutral-800 dark:text-neutral-300" />
             <span className="text-neutral-700 dark:text-neutral-300 text-sm">
@@ -73,8 +139,8 @@ export function SignupFormDemo() {
             <BottomGradient />
           </button>
           <button
-            className=" relative group/btn flex space-x-2 items-center justify-start px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]"
-            type="submit"
+            className="relative group/btn flex space-x-2 items-center justify-start px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]"
+            type="button"
           >
             <IconBrandGoogle className="h-4 w-4 text-neutral-800 dark:text-neutral-300" />
             <span className="text-neutral-700 dark:text-neutral-300 text-sm">
@@ -87,6 +153,8 @@ export function SignupFormDemo() {
     </div>
   );
 }
+
+// Rest of the component remains the same
 
 const BottomGradient = () => {
   return (

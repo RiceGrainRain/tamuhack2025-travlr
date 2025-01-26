@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { IconClipboard } from "@tabler/icons-react";
-import { cn } from "/home/red/Coding/tamuhack2025-travlr/src/lib/utils.ts";
+import { cn } from "../../../../tamuhack2025-travlr/src/lib/utils.ts";
 
 export const ButtonsCard = ({
   children,

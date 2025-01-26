@@ -10,12 +10,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tabler/icons-react": "^3.29.0",
     "clsx": "^2.1.1",
     "framer-motion": "^11.5.4",
     "lucide-react": "^0.474.0",
+    "next": "^15.1.6",
     "radix-ui": "^1.1.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "tabler": "^1.0.0",
     "tailwind-merge": "^2.5.2"
   },
   "devDependencies": {

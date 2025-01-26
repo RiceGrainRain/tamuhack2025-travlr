@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { Sidebar, SidebarBody, SidebarLink } from "/home/red/Coding/tamuhack2025-travlr/src/components/ui/manas-sidebar.tsx";
+import { Sidebar, SidebarBody, SidebarLink } from "../../../../tamuhack2025-travlr/src/components/ui/manas-sidebar.tsx";
 import {
   IconArrowLeft,
   IconBrandTabler,
@@ -10,7 +10,7 @@ import {
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { cn } from "/home/red/Coding/tamuhack2025-travlr/src/lib/utils.ts";
+import { cn } from "../../../../tamuhack2025-travlr/src/lib/utils.ts";
 
 export function SidebarDemo() {
   const links = [
