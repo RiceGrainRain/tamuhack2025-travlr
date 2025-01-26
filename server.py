@@ -40,6 +40,10 @@ def get_db_connection():
 @app.route('/new_review', methods=['OPTIONS'])
 @app.route('/login_customer', methods=['OPTIONS'])
 @app.route('/login_employee', methods=['OPTIONS'])
+@app.route('/give_requests', methods = ['OPTIONS'])
+@app.route('/delete_requests', methods = ["OPTIONS"])
+@app.route('/new_requests', methods=['OPTIONS'])
+@app.route('')
 def handle_options():
     response = make_response()
     response.headers.add("Access-Control-Allow-Origin", "*")
@@ -130,6 +134,8 @@ def new_employee():
 
 # [Other routes would follow the same pattern]
 
+
+
 @app.route('/new_order', methods=['POST'])
 def new_order():
     data = request.json
@@ -194,6 +200,64 @@ def login_customer():
         if rows:
             return add_cors_headers(jsonify({"authenticated": True})), 200
         return add_cors_headers(jsonify({"authenticated": False})), 401
+    except Exception as e:
+        return add_cors_headers(jsonify({"error": str(e)})), 400
+
+@app.route('/give_requests', methods = ["POST"])
+def give_requests():
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    
+    cursor.execute('SELECT id, seat, desc FROM Requests')
+    rows = cursor.fetchall()
+    columns = [description[0] for description in cursor.description]
+    
+    data = [dict(zip(column_name, row)) for row in rows]
+    
+    conn.close()
+    return jsonify(data)
+
+@app.route('/delete_requests', methods = ["POST"])
+def delete_requests():
+    data = request.json
+    try:
+        conn = get_db_connection()
+        if not conn:
+            return add_cors_headers(jsonify({"error": "Database connection failed"})), 500
+
+        cursor = conn.cursor()
+        query = """DELETE * FROM Requests WHERE id = %s AND seat = %s AND descr = %s """
+        cursor.execute(query, (
+            data['id'], 
+            data['seat'], 
+            data['descr']
+        ))
+         
+        conn.commit()
+        conn.close()
+        return add_cors_headers(jsonify({"message": "Review inserted successfully"})), 201
+    except Exception as e:
+        return add_cors_headers(jsonify({"error": str(e)})), 400
+    
+@app.route('/new_requests', methods=['POST'])
+def new_requests():
+    data = request.json
+    try:
+        conn = get_db_connection()
+        if not conn:
+            return add_cors_headers(jsonify({"error": "Database connection failed"})), 500
+
+        cursor = conn.cursor()
+        query = """INSERT INTO Reviews (id, seat, descr) VALUES (%s, %s, %s);"""
+        cursor.execute(query, (
+            data['id'], 
+            data['seat'], 
+            data['descr']
+        ))
+        
+        conn.commit()
+        conn.close()
+        return add_cors_headers(jsonify({"message": "Review inserted successfully"})), 201
     except Exception as e:
         return add_cors_headers(jsonify({"error": str(e)})), 400
 
