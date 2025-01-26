@@ -3,15 +3,11 @@ import { TypewriterEffectSmooth } from "../ui/typewriter-effect";
 export function TypewriterEffectSmoothDemo() {
   const words = [
     {
-      text: "We",
-      className: 'text-black xl:text-6xl lg:text-5xl md:text-3xl sm:text-2xl'
-    },
-    {
-      text: "Make",
-      className: 'text-black xl:text-6xl lg:text-5xl md:text-3xl sm:text-2xl'
-    },
-    {
       text: "Traveling",
+      className: 'text-black xl:text-6xl lg:text-5xl md:text-3xl sm:text-2xl'
+    },
+    {
+      text: "Made",
       className: "text-black xl:text-6xl lg:text-5xl md:text-3xl sm:text-2xl",
     },
     {
