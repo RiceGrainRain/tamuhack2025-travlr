@@ -79,4 +79,5 @@ INSERT INTO Customers (Customer_ID, First_Name, Last_Name, Password_, Email_Addr
 INSERT INTO Customers (Customer_ID, First_Name, Last_Name, Password_, Email_Address, Flight_ID, Seat) VALUES (200, 'Haley', 'White', 'apple', 'hwhite@gmail.com', 1234, 'A24');
 INSERT INTO Flights (Flight_ID, Depart, Dest, Depart_Time, Dest_Time, Depart_Gate, Dest_Gate) VALUES (1234, 'JFK', 'LAX', 1030, 1700, 'B15', 'C50');
 INSERT INTO Employees (Employee_ID, First_Name, Last_Name, Password_, Email_Address, Flight_ID) VALUES (1, 'Seth', 'Brown', 'sb1', 'sethb@gmail.com', 1234);
- 
+INSERT INTO Requests (Seat, Request) VALUES ('A12', 'The window will not close');
+INSERT INTO Requests (Seat, Request) VALUES ('A24', 'Could I get a bottle of water');
